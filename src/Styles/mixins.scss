@@ -1,0 +1,15 @@
+@mixin flexCol($align: center, $justify: center, $gap: 0) {
+    display: flex;
+    flex-direction: column;
+    align-items: $align;
+    justify-content: $justify;
+    gap: #{$gap}px;
+}
+
+
+@mixin flexRow($align: center, $justify: center, $gap: 0) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    gap: #{$gap}px;
+}

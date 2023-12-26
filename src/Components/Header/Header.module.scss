@@ -1,0 +1,64 @@
+@import '../../Styles/Global.scss';
+
+.container {
+    background-color: $primaryColor;
+    color: $baseColor;
+    padding: 10px;
+
+
+    .header {
+
+        @include flexRow (center, space-between, 15);
+        padding: 10px 30px;
+
+        .sectionOne {
+            @include flexCol(flex-start, center, 10);
+
+            .title {
+                font-size: 30px;
+            }
+            
+            .options {
+                @include flexRow(center, center, 15);
+                font-size: 18px;
+
+
+                div {
+                    @include flexRow(center, center);
+
+                    svg {
+                        font-size: 40px;
+                        margin-top: 3px;
+                    }
+                }
+
+            }
+
+
+
+            .subTitle {
+                color: $secondaryColor;
+
+            }
+
+        }
+
+        .sectiontwo {
+
+            .navigation{
+                @include flexRow(center,space-around, 15);
+              
+
+                .active {
+                    color: $secondaryColor;
+                    border-bottom: 1px solid $secondaryColor;
+                    transition: 0.5s ease;
+                   
+                }
+            }
+        
+        }
+
+
+    }
+}

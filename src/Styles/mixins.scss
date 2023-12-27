@@ -13,3 +13,22 @@
     justify-content: $justify;
     gap: #{$gap}px;
 }
+
+@mixin heading {
+    font-family: "Montserrat", "sans-serif";
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+
+@mixin subheading {
+    font-family: "Montserrat", "sans-serif";
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+@mixin content {
+    font-family: "Montserrat", "sans-serif";
+    font-weight: 400;
+    font-size: .75rem;
+}

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Styles from './Header.module.scss'
 import { headerConfig, NavItems } from '../../Constants'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const RenderTitle = ({ data }) => {
@@ -43,12 +45,15 @@ const RenderNavigationLinks = ({ data, setCurrentNav, currentNav }) => {
 
 
 
-
 const RenderButtons = () => {
   return (
-    <div>Login</div>
+    <div className={Styles.sectionThree}>
+      <button >Log In</button>
+      <button className={Styles.signup}>Sign Up</button>
+    </div>
   )
 }
+
 
 
 
@@ -58,9 +63,32 @@ const Header = ({ navData = NavItems, headerData = headerConfig }) => {
 
   const [currentNav, setCurrentNav] = useState({});
 
-  useEffect(() => {                               //mounting 
-    setCurrentNav(navData[0])
-  }, [])
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const nav = navData.find(nav => nav.route === pathname)                           //mounting 
+    setCurrentNav(nav)
+  }, [pathname, navData])
+
+
+  const renderMobileMenu = () => {
+    return (
+      <div className="mobileContainer">
+        <RenderNavigationLinks
+          currentNav={currentNav}
+          setCurrentNav={setCurrentNav}
+          data={navData} />
+
+        <RenderButtons />
+
+        <div className="closeIcon"
+          onClick={() => setIsMenuOpen(false)}><CloseIcon /></div>
+      </div>
+    )
+  }
+
 
 
 
@@ -75,8 +103,12 @@ const Header = ({ navData = NavItems, headerData = headerConfig }) => {
             setCurrentNav={setCurrentNav}
             data={navData} />
           <RenderButtons />
+          <div className={Styles.mobileMenuicon}
+            onClick={() => setIsMenuOpen(true)}
+          ><MenuIcon /></div>
 
         </div>
+        {isMenuOpen ? renderMobileMenu() : ''}
       </div>
 
     </header>

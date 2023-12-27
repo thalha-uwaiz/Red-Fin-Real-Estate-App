@@ -1,14 +1,14 @@
  export const headerConfig = {
-    title: 'RED',
-    subTitle : ' FIN',
+    title: 'Red',
+    subTitle : 'Fin',
     options: ['Rent', 'Buy', 'Sell']
   }
   
 
   export const NavItems = [
     {label: 'Home', route: '/', id: 'home' },
-    {label: 'Featured', route: '/', id: 'featured' },
-    {label: 'Packages', route: '/', id: 'packages' },
-    {label: 'ContactUs', route: '/', id: 'contactUs' }
+    {label: 'Featured', route: '/featured', id: 'featured' },
+    {label: 'Packages', route: '/packages', id: 'packages' },
+    {label: 'Contact Us', route: '/contactUs', id: 'contactUs' }
     
   ]

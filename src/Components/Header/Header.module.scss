@@ -15,12 +15,12 @@
             @include flexCol(flex-start, center, 10);
 
             .title {
-                font-size: 30px;
+                @include heading();
             }
             
             .options {
                 @include flexRow(center, center, 15);
-                font-size: 18px;
+                @include content();
 
 
                 div {
@@ -43,22 +43,64 @@
 
         }
 
-        .sectiontwo {
 
-            .navigation{
-                @include flexRow(center,space-around, 15);
-              
-
-                .active {
-                    color: $secondaryColor;
-                    border-bottom: 1px solid $secondaryColor;
-                    transition: 0.5s ease;
-                   
-                }
-            }
-        
+        .mobileMenuicon {
+            display: none;
         }
 
+        @media only screen and (max-width: 850px) {
+            
+            
+        .mobileMenuicon {
+            display: flex;
+        }
 
+        .sectiontwo {
+            
+            display: none;
+        }
+
+        .sectionThree{
+            display: none;
+        }
+        }
     }
+
+    .sectiontwo {
+
+        .navigation{
+            @include flexRow(center,space-around, 15);
+            @include subheading();
+            font-weight:800;
+          
+
+            .active {
+                color: $secondaryColor;
+                border-bottom: 1px solid $secondaryColor;
+                transition: 0.5s ease;
+               
+            }
+        }
+    
+    }
+
+    .sectionThree {
+        @include flexRow(center ,center ,10);
+       
+        
+         button {
+            background: transparent;
+            border: none;
+            padding: 5px 10px;
+            color: $baseColor;
+            cursor: pointer;
+            @include subheading();
+        }
+
+        .signup {
+            background-color: $secondaryColor;
+            border-radius: 5px;
+        }
+    }
+
 }

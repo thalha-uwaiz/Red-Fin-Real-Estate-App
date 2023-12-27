@@ -5,22 +5,23 @@ import {
     createRoutesFromElements,
     Route,
 } from 'react-router-dom';
-import Header from '../Components/Header';
+import Layout from '../Pages/Layout';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <>
-            <Route
-                path='/'
-                element={<Header />}
-                errorElement={<div>Error Page</div>}
-            />
-            <Route
-                path='/about'
-                element={<div>About Page</div>}
-                errorElement={<div>Error Page</div>}
-            />
-        </>
+
+        <Route
+            path='/'
+            element={<Layout />}
+            errorElement={<div>Error Page</div>}
+        >
+            <Route path='/' element={<div>About Page</div>} > </Route>
+            <Route path='/featured' element={<div>featured</div>} ></Route>
+            <Route path='/packages' element={<div>packages</div>} ></Route>
+            <Route path='/contactUs' element={<div>contactUs</div>} ></Route>
+
+
+        </Route>
     )
 );
 

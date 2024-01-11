@@ -23,7 +23,7 @@ const RenderTitle = ({ data }) => {
 
 
 
-const RenderNavigationLinks = ({ data, setCurrentNav, currentNav }) => {
+const RenderNavigationLinks = ({ data, setCurrentNav, currentNav, setIsMenuOpen }) => {
 
   return (
     <div className={Styles.sectiontwo}>
@@ -33,7 +33,7 @@ const RenderNavigationLinks = ({ data, setCurrentNav, currentNav }) => {
             className={nav.id === currentNav.id ? Styles.active : ''}
             to={nav.route}
             key={nav.id}
-            onClick={() => setCurrentNav(nav)}
+            onClick={() => {setCurrentNav(nav); setIsMenuOpen(false);}}
           >
             {nav.label}
           </Link>
@@ -75,15 +75,16 @@ const Header = ({ navData = NavItems, headerData = headerConfig }) => {
 
   const renderMobileMenu = () => {
     return (
-      <div className="mobileContainer">
+      <div className={Styles.mobileContainer}>
         <RenderNavigationLinks
           currentNav={currentNav}
           setCurrentNav={setCurrentNav}
-          data={navData} />
+          data={navData} 
+          setIsMenuOpen={setIsMenuOpen}/>
 
         <RenderButtons />
 
-        <div className="closeIcon"
+        <div className={Styles.closeIcon}
           onClick={() => setIsMenuOpen(false)}><CloseIcon /></div>
       </div>
     )

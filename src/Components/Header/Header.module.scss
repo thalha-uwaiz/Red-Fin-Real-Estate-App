@@ -17,7 +17,7 @@
             .title {
                 @include heading();
             }
-            
+
             .options {
                 @include flexRow(center, center, 15);
                 @include content();
@@ -48,48 +48,49 @@
             display: none;
         }
 
-        @media only screen and (max-width: 850px) {
-            
-            
-        .mobileMenuicon {
-            display: flex;
-        }
+        @media only screen and (max-width: 800px) {
 
-        .sectiontwo {
-            
-            display: none;
-        }
 
-        .sectionThree{
-            display: none;
-        }
+            .mobileMenuicon {
+                display: flex;
+            }
+
+            .sectiontwo {
+
+                display: none;
+            }
+
+            .sectionThree {
+                display: none;
+            }
         }
     }
 
     .sectiontwo {
 
-        .navigation{
-            @include flexRow(center,space-around, 15);
+        .navigation {
+            @include flexRow(center, space-around, 15);
             @include subheading();
-            font-weight:800;
-          
+            font-weight: 800;
+
 
             .active {
                 color: $secondaryColor;
                 border-bottom: 1px solid $secondaryColor;
                 transition: 0.5s ease;
-               
+
             }
         }
-    
+
     }
 
     .sectionThree {
-        @include flexRow(center ,center ,10);
-       
-        
-         button {
-            background: transparent;
+        @include flexRow(center, center, 10);
+
+
+        button {
+            background: $primaryColor;
+            border-radius: 5px;
             border: none;
             padding: 5px 10px;
             color: $baseColor;
@@ -101,6 +102,44 @@
             background-color: $secondaryColor;
             border-radius: 5px;
         }
+    }
+
+    .mobileContainer {
+        display: none;
+
+        .closeIcon {
+            display: none;
+           
+        }
+
+        @media only screen and (max-width:800px) {
+            @include flexCol(flex-start, flex-start, 20);
+            height: 100vh;
+            width: 100vw;
+            background-color: #ccc;
+            color: black;
+            padding: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            .closeIcon {
+                display: block;
+                cursor: pointer;
+                right: 50px;
+                color: black;
+                position: absolute;
+                
+            }
+
+            .sectiontwo {
+                .navigation {
+                    @include flexCol(flex-start, center, 15)
+                }
+            }
+
+        }
+
     }
 
 }

@@ -33,7 +33,7 @@ const RenderNavigationLinks = ({ data, setCurrentNav, currentNav, setIsMenuOpen 
             className={nav.id === currentNav.id ? Styles.active : ''}
             to={nav.route}
             key={nav.id}
-            onClick={() => {setCurrentNav(nav); setIsMenuOpen(false);}}
+            onClick={() => { setCurrentNav(nav); setIsMenuOpen(false); }}
           >
             {nav.label}
           </Link>
@@ -79,8 +79,8 @@ const Header = ({ navData = NavItems, headerData = headerConfig }) => {
         <RenderNavigationLinks
           currentNav={currentNav}
           setCurrentNav={setCurrentNav}
-          data={navData} 
-          setIsMenuOpen={setIsMenuOpen}/>
+          data={navData}
+          setIsMenuOpen={setIsMenuOpen} />
 
         <RenderButtons />
 

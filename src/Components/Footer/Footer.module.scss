@@ -43,16 +43,16 @@ $footerColor : #D9DBE1;
 
     }
 
-    .menu{
+    .menu {
         min-width: 175px;
 
-        .subHeading{
+        .subHeading {
             @include subheading;
             color: $baseColor;
             padding: 10px 0
         }
 
-        .menuItems{
+        .menuItems {
             @include flexCol(flex-start);
             gap: 15px;
 
@@ -60,32 +60,32 @@ $footerColor : #D9DBE1;
                 color: $secondaryColor;
             }
 
-            :first-child{
+            :first-child {
                 padding-top: 10px;
             }
         }
     }
 
-    .newsLetter{
-        .label{
+    .newsLetter {
+        .label {
             @include subheading;
             padding: 10px 0;
             color: $baseColor;
         }
 
-        .emailContainer{
+        .emailContainer {
             @include flexRow();
             gap: 10px;
             padding: 5px 10px;
             border-radius: 10px;
             background-color: rgb(212, 209, 209);
 
-            button{
+            button {
                 background: none;
                 border: none;
             }
 
-            input{
+            input {
                 background: transparent;
                 border: none;
                 color: black;
@@ -94,15 +94,37 @@ $footerColor : #D9DBE1;
                 font-weight: bold;
             }
 
-            svg{
-                color:$secondaryColor ;
+            svg {
+                color: black;
                 transform: rotate(-45deg);
-                font-size: 15px;
+                font-size: 20px;
             }
 
         }
     }
 
+    @media only screen and (max-width:950px) {
+        @include flexRow(flex-start, flex-start, 30);
+        flex-wrap: wrap;
+        width: 100%;
+
+        >div:not(.newsLetter) {
+            width: 45%;
+        }
+
+        .menu {
+            .menuItems {
+                @include flexRow(flex-start, flex-start, 15);
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    @media only screen and (max-width:600px) {
+        >div:not(.newsLetter) {
+            width: 90%;
+        }
+    }
 
 
 }

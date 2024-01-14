@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import EmailIcon from '@mui/icons-material/Email';
 import SendIcon from '@mui/icons-material/Send';
 import { Link } from 'react-router-dom';
 import Styles from './Footer.module.scss';
@@ -11,7 +11,12 @@ import Styles from './Footer.module.scss';
 const AboutData = {
   heading: ['Red ', 'Fin'],
   content: ['Copyrights RedFin Homes and Properties. ', 'All rights reserved. '],
-  socialIcons: [<InstagramIcon />, <FacebookIcon />, <LinkedInIcon />, <TwitterIcon />]
+  socialIcons: [
+    <Link to={'https://www.instagram.com/thalhauwaiz_20/'}><InstagramIcon /></Link>,
+    <Link to={'https://web.facebook.com/Thalha20'}><FacebookIcon /></Link>,
+    <Link to={'https://www.linkedin.com/in/mohamed-thalha-9a1298223/'}><LinkedInIcon /></Link>,
+    <Link to={'https://github.com/thalha-uwaiz?tab=repositories'}><EmailIcon /></Link>
+  ]
 }
 
 const companyMenu = {
@@ -42,6 +47,8 @@ const supportMenu = {
 
 
 const Footer = () => {
+
+  const email = useRef();
 
   const renderAboutPage = (data) => {
     const { heading, content, socialIcons } = data;
@@ -88,7 +95,10 @@ const Footer = () => {
 
   const handleNewsLetter = (event) => {
     event.preventDefault();
-    console.log('form clicked')
+
+    const { current } = email
+    console.log('Email Address', current.value)
+    email.current.value = ''
 
   }
 
@@ -96,18 +106,18 @@ const Footer = () => {
     return (
       <div className={Styles.newsLetter}>
         <div className={Styles.label}> Stay up to date </div>
-        
-          <form onSubmit={handleNewsLetter}>
+
+        <form onSubmit={handleNewsLetter}>
           <div className={Styles.emailContainer}>
-            <input type="email" placeholder='Your Email Address' />
+            <input ref={email} type="email" placeholder='Your Email Address' />
             <button type='submit' className={Styles.sendIcon}>
               <SendIcon />
             </button>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
+      </div>
 
-     
+
     )
   }
 

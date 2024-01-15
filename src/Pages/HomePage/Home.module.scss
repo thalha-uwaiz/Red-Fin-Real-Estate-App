@@ -1,5 +1,94 @@
 @import '../../Styles/Global.scss';
+@import '../../Styles/mixins.scss';
 
-.label {
-    color: $secondaryColor;
+
+.container {
+    @include flexCol();
+
+    .sectionOne {
+        background-image: url('../../Assets/images/background.png');
+        width: 100%;
+        min-height: 60vh;
+        height: auto;
+        background-size: cover;
+        padding: 2% 2% 10% 10%;
+        @include flexCol(flex-start, center);
+        gap: 1rem;
+        color: $primaryColor;
+
+        .title {
+            @include heading;
+            font-size: 3rem;
+        }
+
+        .heading {
+            @include heading;
+        }
+
+        .subHeading {
+            @include flexRow(center, center, 5);
+            @include subheading;
+            color: $secondaryColor;
+        }
+    }
+
+    .sectionTwo {
+        background: var(--Colour-3, rgba(255, 87, 34, 0.11));
+
+        .heading {
+            @include heading;
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        .steps {
+            @include flexRow(center, space-around, 20);
+            padding: 1rem;
+
+            .processConteiner {
+                @include flexRow;
+                min-height: 15vh;
+                min-width: 25%;
+                gap: 25px;
+
+                .icon {
+                    @include flexRow();
+                    gap: 25px;
+
+                    .subSection {
+                        @include flexCol(flex-start, center, 10);
+
+                        .subHeading {
+                            @include subheading;
+                            font-weight: bold;
+                        }
+                    }
+
+                }
+
+
+            }
+
+
+            @media only screen and (max-width:950px) {
+                padding: 2rem;
+                @include flexCol(flex-start, center, 25px);
+
+                .processConteiner {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                svg {
+                    margin-left: 10px;
+                    transform: rotate(90deg);
+
+                }
+            }
+        }
+
+
+
+
+    }
 }

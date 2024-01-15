@@ -6,6 +6,10 @@ import {
     Route,
 } from 'react-router-dom';
 import Layout from '../Pages/Layout';
+import Home from '../Pages/HomePage';
+import Featured from '../Pages/Featured';
+import HolidayPackages from '../Pages/HolidayPackages';
+import ContactUs from '../Pages/ContactUs';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,10 +19,10 @@ const router = createBrowserRouter(
             element={<Layout />}
             errorElement={<div>Error Page</div>}
         >
-            <Route path='/' element={<div>About Page</div>} > </Route>
-            <Route path='/featured' element={<div>featured</div>} ></Route>
-            <Route path='/packages' element={<div>packages</div>} ></Route>
-            <Route path='/contactUs' element={<div>contactUs</div>} ></Route>
+            <Route path='/' element={<Home />} > </Route>
+            <Route path='/featured' element={<Featured />} ></Route>
+            <Route path='/packages' element={<HolidayPackages />} ></Route>
+            <Route path='/contactUs' element={<ContactUs />} ></Route>
 
 
         </Route>

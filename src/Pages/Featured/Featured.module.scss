@@ -1,0 +1,169 @@
+@import '../../Styles/Global.scss';
+@import '../../Styles/mixins.scss';
+
+.container {
+    @include content();
+
+    .header {
+        padding: 30px 20px;
+        @include flexRow();
+        gap: 10%;
+
+
+        .title {
+            @include heading();
+            width: max-content;
+            color: $primaryColor;
+
+            span {
+                border-bottom: 4px solid $secondaryColor;
+                margin-right: 10px;
+            }
+        }
+
+        .tabs {
+            @include flexRow();
+            gap: 10px;
+            flex-wrap: wrap;
+
+            .tab {
+                @include flexRow();
+                gap: 10px;
+                border-radius: 30px;
+                border: 1px solid #333;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+
+            .activeTab {
+                border: none;
+                background-color: $secondaryColor;
+                color: $baseColor;
+            }
+        }
+
+        .scrollButtons {
+            @include flexRow();
+            gap: 30px;
+            width: 35px;
+            right: 35px;
+
+            .activeScrollButton {
+                border: none;
+                background-color: $secondaryColor;
+                color: $baseColor;
+            }
+
+        }
+    }
+
+    .houses{
+        @include flexRow(center, flex-start, 25);
+        padding: 15px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+
+        .building{
+            @include flexCol(flex-start, flex-start, 5);
+            max-width: 280px;
+            flex: 0 0 auto;
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid grey;
+ 
+            :hover{
+                transform: scale(1);
+                border-color: $primaryColor;
+                cursor: pointer;
+               
+            }
+
+            img{
+                object-fit: cover;
+                align-self: center;
+                width: 100%;
+            }
+
+            .price{
+                @include heading;
+                padding: 15px;
+                position: relative;
+                .Lkr{
+                    @include content;
+                    padding-right: 5px;
+                    font-size: 1rem;
+                }
+            }
+
+            .interest{
+                padding-bottom: 10px;
+                @include content;
+            }
+
+            .viewMore{
+                @include flexRow();
+                background: none;
+                width: 100%;
+                background-color: $secondaryColor;
+                border: none;
+                color: $baseColor;
+                padding: 7px 10px;
+                border-radius: 8px;
+                font-size: 1rem;
+
+                &:hover{
+                    transform: scale(1.05);
+                    
+                }
+
+            }
+
+            .details{
+                padding: 10px;
+                @include flexRow(center, space-between);
+                width: 100%;
+
+                .label{
+                    max-width: 60%;
+                    @include subheading();
+                    font-weight: bold
+                }
+
+                .otherDetails{
+                    @include flexRow;
+                    font-size: 8px;
+                    gap: 7px;
+                    margin-left: 50px;
+                    .section{
+                        @include flexCol;
+                        @include flexRow;
+                        svg{
+                            font-size: 15px;
+                        }
+                    }
+       
+                }
+
+            }
+
+        }
+
+    }
+
+    @media only screen and (max-width: 800px){
+        .header{
+            flex-direction: column;
+            gap: 30px;
+
+        }
+        .tabs{
+            font-size: 10px;
+            gap: 6px;
+
+            .tab{
+                padding: 8px 14px ;
+            }
+
+        }
+    }
+}

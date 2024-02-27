@@ -80,6 +80,10 @@ const Home = () => {
     )
   }
 
+  const formSubmit = (formData) => {
+    console.log('from Home page', formData)
+  }
+
 
   return (
     <div className={Styles.container}>
@@ -91,15 +95,18 @@ const Home = () => {
         <div className={Styles.subHeading}><span>Explore More</span><ArrowForwardIcon /></div>
       </div>
 
-      <div className={Styles.sectionTwo}>
-        <div className={Styles.heading}>How It Works</div>
-        <div className={Styles.steps}>{processConfig.map(renderProcess)}</div>
-
-      </div>
-
       <div className={Styles.sectionThree}>
-        <div className={Styles.heading}>What Do you need?</div>
-        <FormHelper config={homeFormConfig} />
+        <div className={Styles.banner}>
+          <div className={Styles.heading}>What Do you need?</div>
+          <FormHelper onSubmit={formSubmit} config={homeFormConfig} />
+        </div>
+
+        <div className={Styles.sectionTwo}>
+          <div className={Styles.heading}>How It Works</div>
+          <div className={Styles.steps}>{processConfig.map(renderProcess)}</div>
+
+        </div>
+
       </div>
 
 

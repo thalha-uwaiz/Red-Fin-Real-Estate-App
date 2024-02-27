@@ -102,6 +102,7 @@ const Header = ({ navData = NavItems, headerData = headerConfig }) => {
           <RenderNavigationLinks
             currentNav={currentNav}
             setCurrentNav={setCurrentNav}
+            setIsMenuOpen={setIsMenuOpen}
             data={navData} />
           <RenderButtons />
           <div className={Styles.mobileMenuicon}

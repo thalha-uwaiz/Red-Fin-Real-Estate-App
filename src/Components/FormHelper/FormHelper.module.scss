@@ -1,0 +1,67 @@
+@import '../../Styles/Global.scss';
+@import '../../Styles/mixins.scss';
+
+.container {
+    position: relative;
+
+    .form {
+        .fieldsContainer {
+            @include flexRow();
+            flex-wrap: wrap;
+
+            .field {
+                @include flexCol(flex-start, flex-start, 5);
+                padding: 10px;
+                @include content;
+
+                select,
+                input {
+                    min-width: 20vw;
+                    background-color: $baseColor;
+                    padding: 10px;
+                    border-radius: 10px;
+                    color: black;
+                    border: none;
+                    outline: none;
+                }
+
+                .error {
+                    min-height: 20px;
+                    color: $secondaryColor;
+                }
+            }
+
+            @media only screen and (max-width:600px) {
+                flex-direction: column;
+
+                .field {
+                    select {
+                        min-width: 65vw;
+                    }
+                }
+
+            }
+        }
+
+        .submitbtn {
+            @include flexRow();
+            @include content();
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            padding: 0.5rem 2rem;
+            background-color: $secondaryColor;
+            color: $baseColor;
+            border-radius: 5px;
+            bottom: -2rem;
+            right: 0;
+
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+
+
+
+    }
+}

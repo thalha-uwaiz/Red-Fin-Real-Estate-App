@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import VillaIcon from '@mui/icons-material/Villa';
 import ApartmentIcon from '@mui/icons-material/Apartment';
@@ -117,15 +117,51 @@ const Featured = () => {
   const [currentHouse, setCurrentHouse] = useState();
   const [activeArrow, setActiveArrow] = useState();
 
+  const currentHouseRef = useRef()
+
   useEffect(() => {
     setCurrentTab(tabConfig[0])
+    setCurrentHouse(houseConfig[0])
+    setActiveArrow('left')
   }, [])
 
+  useEffect(() => {
+    if(currentHouseRef.current){
+      currentHouseRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest',
+      })
+    }
+  })
+
   const handlePreviousHouse = () => {
+    if (currentHouse.id === houseConfig[0].id)
+      return null
+    const currentIndex = houseConfig.findIndex(
+      house => house.id === currentHouse.id)
+    if (currentIndex > 0) {
+      setCurrentHouse(houseConfig[currentIndex - 1])
+    }
+    if (houseConfig[0]) {
+      setActiveArrow('left')
+    }
 
   }
 
   const handleNextHouse = () => {
+    if (currentHouse.id === houseConfig[houseConfig.length - 1].id)
+      return null
+
+    const currentIndex = houseConfig.findIndex(
+      house => house.id === currentHouse.id)
+    if (currentIndex < houseConfig.length - 1) {
+      setCurrentHouse(houseConfig[currentIndex + 1])
+    }
+    if (houseConfig[houseConfig.length - 1]) {
+      setActiveArrow('right')
+    }
+
 
   }
 
@@ -146,9 +182,14 @@ const Featured = () => {
 
 
   const renderHouses = (data) => {
-    const {label, id, price, rating, imgSrc, interest, bedroom } = data;
+    const { label, id, price, imgSrc, interest, bedroom } = data;
+    const check = currentHouse?.id === id;
     return (
-       <div key={id} className={Styles.building}>
+      <div key={id} className={cx(Styles.building,
+        check ? Styles.activeBuilding : '')}
+        ref={check ? currentHouseRef : null}
+        onClick={() => setCurrentHouse(data)}
+      >
         <img src={imgSrc} alt={label} />
         <div className={Styles.details}>
           <div className={Styles.label}>{label}</div>
@@ -172,8 +213,8 @@ const Featured = () => {
         </div>
         <button className={Styles.viewMore}>
           <span>View More&nbsp;&nbsp;</span> <ArrowForwardIcon />
-          </button>
-       </div>
+        </button>
+      </div>
     )
   }
 
@@ -184,9 +225,18 @@ const Featured = () => {
           <span>Featured</span>
           Houses</div>
         <div className={Styles.tabs}>{tabConfig.map(renderTab)}</div>
+
         <div className={Styles.scrollButtons}>
-          <KeyboardArrowLeftIcon />
-          <KeyboardArrowRightIcon />
+          <div className={cx(Styles.right,
+            activeArrow === 'left' ? Styles.activeArrow : '')}
+            onClick={handlePreviousHouse}>
+            <KeyboardArrowLeftIcon /></div>
+
+          <div className={cx(Styles.left,
+            activeArrow === 'right' ? Styles.activeArrow : '')}
+            onClick={handleNextHouse}>
+            <KeyboardArrowRightIcon /></div>
+
         </div>
       </div>
       <div className={Styles.houses}>

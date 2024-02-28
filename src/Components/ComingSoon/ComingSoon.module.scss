@@ -1,0 +1,40 @@
+@import '../../Styles/Global.scss';
+@import '../../Styles/mixins.scss';
+
+.container{
+    @include flexRow();
+    .content{
+        @include flexCol();
+        .title{
+            @include heading;
+            font-size: 2rem;
+            margin: 2rem;
+        }
+        .discription{
+            @include subheading;
+            font-size: 1rem;
+            color: #777;
+        }
+        img{
+            width: 60%;
+            object-fit: cover;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .button{
+            border: none;
+            background-color: $secondaryColor;
+            font-size: 1rem;
+            padding: 0.8rem 4rem;
+            margin: 20px 0;
+            color: $baseColor;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover{
+                background-color: $primaryColor;
+            }
+
+        }
+    }
+}

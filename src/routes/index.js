@@ -8,8 +8,8 @@ import {
 import Layout from '../Pages/Layout';
 import Home from '../Pages/HomePage';
 import Featured from '../Pages/Featured';
-import HolidayPackages from '../Pages/HolidayPackages';
 import ContactUs from '../Pages/ContactUs';
+import ComingSoon from '../Components/ComingSoon';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
         >
             <Route path='/' element={<Home />} > </Route>
             <Route path='/featured' element={<Featured />} ></Route>
-            <Route path='/packages' element={<HolidayPackages />} ></Route>
+            <Route path='/packages' element={<ComingSoon />} ></Route>
             <Route path='/contactUs' element={<ContactUs />} ></Route>
 
 
